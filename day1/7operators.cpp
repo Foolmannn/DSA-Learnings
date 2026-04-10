@@ -41,6 +41,27 @@ int main(){
        cout<< ((3  > 1) || (5 < 7)) << endl;
        cout<< ((3  < 1) || (5 > 7)) << endl;
 
+//Unary Operators:
+
+  //Increment operators:
+      int n=6;
+      int w= n++;
+      // it is post increment here the work happens first then the increment occurs
+      cout<< w <<endl;
+      cout<< n <<endl;
+      int m=10;
+      int x= --m;
+      //this is pre decrement here the work i.e assigning happens after and firstly the decrement occurs 
+      cout<< x <<endl;
+      cout << m <<endl;
+      int p= 5;
+      int y= p--;
+      //this is post decrement here the work i.e assigning happens first and then  the decrement occurs 
+      cout<< y <<endl;
+      cout << p <<endl;
+
+
+
 //Bitwise operators 
     
     return 0;
