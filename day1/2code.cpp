@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    cout << "Suman " << "\n" <<"Pun Magar " << endl;
+    cout << "Suman " << "\n" <<"Pun Magar " << endl; // cin cout are the global objects and << >> are the overloaders 
 
     return 0;
 }
