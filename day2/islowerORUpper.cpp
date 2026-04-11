@@ -14,8 +14,11 @@ if(ascii >= 65 && ascii <= 90){
     cout<<ch <<" is Uppercase";
 
 }
-else{
+else if(ch>=90 && ch<=123){
     cout<<ch<< " is Lowercase";
+}
+else{
+    cout<<"Enter the valid english character";
 }
     
     return 0;
