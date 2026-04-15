@@ -1,154 +1,209 @@
-**Bitwise Operators in C++** are used to perform operations directly on the **binary (bit-level) representation** of integers. They are very important in **DSA, optimization, and low-level programming**.
+**DSA + C++ core concepts** 
 
 ---
 
-## 🔹 List of Bitwise Operators
+# 🔹 1. What are Bitwise Operators?
 
-| Operator | Name             | Description                            |
-| -------- | ---------------- | -------------------------------------- |
-| `&`      | AND              | Sets bit to 1 if both bits are 1       |
-| `\|`     | OR               | Sets bit to 1 if at least one bit is 1 |
-| `^`      | XOR              | Sets bit to 1 if bits are different    |
-| `~`      | NOT (Complement) | Inverts all bits                       |
-| `<<`     | Left Shift       | Shifts bits to the left                |
-| `>>`     | Right Shift      | Shifts bits to the right               |
+Bitwise operators work on **binary (bits)** of numbers.
+
+👉 Example:
+
+```
+5  = 0101
+3  = 0011
+```
+
+Operations happen **bit by bit**.
 
 ---
 
-## 🔹 Examples
+# 🔹 2. Types of Bitwise Operators
 
-Let’s take:
+---
+
+## 🟢 1. AND (`&`)
+
+👉 Rule: `1 & 1 = 1`, else `0`
 
 ```cpp
-int a = 5;   // 0101
-int b = 3;   // 0011
+int a = 5; // 0101
+int b = 3; // 0011
+cout << (a & b); // 0001 = 1
 ```
 
 ---
 
-### 1️⃣ Bitwise AND (`&`)
+## 🟢 2. OR (`|`)
+
+👉 Rule: if any bit is `1` → result is `1`
 
 ```cpp
-a & b  // 0001 → 1
-```
-
-👉 Only 1 where both bits are 1
-
----
-
-### 2️⃣ Bitwise OR (`|`)
-
-```cpp
-a | b  // 0111 → 7
-```
-
-👉 1 if at least one bit is 1
-
----
-
-### 3️⃣ Bitwise XOR (`^`)
-
-```cpp
-a ^ b  // 0110 → 6
-```
-
-👉 1 if bits are different
-
----
-
-### 4️⃣ Bitwise NOT (`~`)
-
-```cpp
-~a  // -(a+1) → -6
-```
-
-👉 Inverts bits (uses two’s complement internally)
-
----
-
-### 5️⃣ Left Shift (`<<`)
-
-```cpp
-a << 1  // 1010 → 10
-```
-
-👉 Multiply by (2^n)
-
----
-
-### 6️⃣ Right Shift (`>>`)
-
-```cpp
-a >> 1  // 0010 → 2
-```
-
-👉 Divide by (2^n)
-
----
-
-## 🔹 Important Concepts
-
-### ✅ 1. Even or Odd Check
-
-```cpp
-if (n & 1) → odd
-else → even
+cout << (5 | 3); // 0111 = 7
 ```
 
 ---
 
-### ✅ 2. Set a Bit
+## 🟢 3. XOR (`^`)
+
+👉 Rule: different bits → `1`
 
 ```cpp
-n = n | (1 << i);
+cout << (5 ^ 3); // 0110 = 6
 ```
 
 ---
 
-### ✅ 3. Clear a Bit
+## 🟢 4. NOT (`~`)
+
+👉 Flips all bits
 
 ```cpp
-n = n & ~(1 << i);
+cout << (~5);
+```
+
+👉 Important:
+
+* Uses **2’s complement**
+* Result becomes negative
+
+Example:
+
+```
+5  = 00000101
+~5 = 11111010 → -6
 ```
 
 ---
 
-### ✅ 4. Toggle a Bit
+## 🟢 5. Left Shift (`<<`)
+
+👉 Shifts bits left → multiply by 2
 
 ```cpp
-n = n ^ (1 << i);
+cout << (5 << 1); // 10
+cout << (5 << 2); // 20
 ```
 
 ---
 
-### ✅ 5. Check ith Bit
+## 🟢 6. Right Shift (`>>`)
+
+👉 Shifts bits right → divide by 2
 
 ```cpp
-if (n & (1 << i))
+cout << (5 >> 1); // 2
+cout << (5 >> 2); // 1
 ```
 
 ---
 
-## 🔹 Why Bitwise is Powerful
-
-* Faster than arithmetic operations
-* Used in:
-
-  * Competitive programming
-  * Cryptography
-  * Graphics
-  * System-level programming
+# 🔹 3. Important Tricks (VERY IMPORTANT FOR DSA)
 
 ---
 
-## 🔹 Small Tip (Very Important for Exams)
+## ✅ 1. Check Even or Odd
 
-👉
+```cpp
+if(n & 1) cout << "Odd";
+else cout << "Even";
+```
 
-* `x ^ x = 0`
-* `x ^ 0 = x`
+👉 Faster than `% 2`
 
-Used in problems like **finding unique number in array**
+---
+
+## ✅ 2. Check Power of 2
+
+```cpp
+if(n > 0 && (n & (n - 1)) == 0)
+    cout << "Power of 2";
+```
+
+---
+
+## ✅ 3. Swap Two Numbers (without temp)
+
+```cpp
+a = a ^ b;
+b = b ^ a;
+a = a ^ b;
+```
+
+---
+
+## ✅ 4. Count Set Bits (1s)
+
+```cpp
+int count = 0;
+while(n){
+    count += (n & 1);
+    n >>= 1;
+}
+```
+
+---
+
+## ✅ 5. Remove Last Set Bit
+
+```cpp
+n = n & (n - 1);
+```
+
+---
+
+# 🔹 4. Real DSA Use Cases
+
+Bitwise operators are heavily used in:
+
+* 🔸 **Bit Manipulation problems**
+* 🔸 Subsets generation
+* 🔸 XOR problems (unique element)
+* 🔸 Competitive programming
+* 🔸 Optimization (fast operations)
+
+---
+
+# 🔥 Example Problem (Important)
+
+### 👉 Find unique number (others appear twice)
+
+```cpp
+int ans = 0;
+for(int i = 0; i < n; i++){
+    ans ^= arr[i];
+}
+cout << ans;
+```
+
+👉 XOR cancels duplicates:
+
+```
+a ^ a = 0
+0 ^ b = b
+```
+
+---
+
+# 🔹 5. Quick Summary Table
+
+| Operator | Meaning     |    |
+| -------- | ----------- | -- |
+| `&`      | AND         |    |
+| `        | `           | OR |
+| `^`      | XOR         |    |
+| `~`      | NOT         |    |
+| `<<`     | Left Shift  |    |
+| `>>`     | Right Shift |    |
+
+---
+
+# 🔥 Pro Tip (Interview)
+
+👉 Most important patterns:
+
+* `n & 1` → odd/even
+* `n & (n-1)` → power of 2 / remove bit
+* XOR → unique element
 
 ---
 
