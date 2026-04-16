@@ -253,52 +253,78 @@ for(int i = 0; i < 2; i++) {
 
 ---
 
-# 🔷 11. Interview / Exam Important Points
 
-You should remember:
-
-* Time complexity of operations
-* Memory formula
-* Difference between array & vector
-* Pointer relation
-* Common patterns:
-
-  * Prefix sum
-  * Sliding window
-  * Two pointers
 
 ---
 
-# 🔷 12. Quick Example Program
+## 🔷 How array is passed in C++
+
+👉 **Arrays are passed as pointers (by reference)**
+
+### Example:
 
 ```cpp
-#include <iostream>
-using namespace std;
+void func(int arr[]) {
+    arr[0] = 100;
+}
+```
 
+```cpp
 int main() {
-    int arr[5] = {10, 20, 30, 40, 50};
-
-    // Traversal
-    for(int i = 0; i < 5; i++) {
-        cout << arr[i] << " ";
-    }
-
-    return 0;
+    int arr[3] = {1, 2, 3};
+    func(arr);
+    cout << arr[0]; // 100
 }
 ```
 
 ---
 
-# 🔷 13. What You Should Learn Next (Important)
+## 🔷 What actually happens
 
-Once you're comfortable:
+When you pass an array:
 
-1. Linear Search
-2. Binary Search
-3. Reverse an array
-4. Prefix Sum
-5. Sliding Window
-6. Kadane’s Algorithm
+```cpp
+func(arr);
+```
+
+👉 It becomes:
+
+```cpp
+func(&arr[0]); // address of first element
+```
+
+So inside function:
+
+```cpp
+arr == pointer to first element
+```
 
 ---
+
+## 🔷 Key Points (Exam Ready)
+
+* Array is **NOT copied**
+* It is passed as a **pointer**
+* Changes inside function **affect original array**
+
+---
+
+## 🔷 Equivalent forms
+
+All are same:
+
+```cpp
+void func(int arr[])
+void func(int arr[10])
+void func(int* arr)
+```
+
+---
+
+##  One-line answer
+
+👉 *“In C++, arrays are passed to functions as pointers to their first element, so modifications affect the original array.”*
+
+---
+
 

@@ -3,8 +3,12 @@ using namespace std;
 
 int main() {
 
-    int size=5;
-int marks[size];
+ //   int size=5;
+// int marks[size]; this will give error in modern c++ as the size is variable so it is unknown during compile time only available during run time
+
+const int size = 5;
+int marks[size]; // compiler needs the size to be constant at compile time 
+
 //int marks[5]={99,67,34,79,99}; // fixed size 5 and fill the data 
 int marks1[50]={99,67,34,79,99}; // fixed sixe 5 but only first five position are filled other are empty
 
