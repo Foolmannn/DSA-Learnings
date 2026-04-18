@@ -12,16 +12,17 @@ int main()
     int size2 = sizeof(arr2) / sizeof(int);
     for (int i = 0; i < size1; i++)
     {
-        int frequency=0;
+        int frequency = 0;
         for (int j = 0; j < size1; j++)
         {
             if (arr1[i] == arr1[j])
             {
-frequency++;
+                frequency++;
             }
         }
-        if(frequency==1){
-            cout<<arr1[i]<<", ";
+        if (frequency == 1)
+        {
+            cout << arr1[i] << ", ";
         }
     }
     //     for(int i = 0; i < size1; i++) {
