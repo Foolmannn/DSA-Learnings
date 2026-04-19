@@ -1,60 +1,49 @@
+// pair sum
+// return pair in sorted array with target sum
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
+/* Since array is SORTED → Use Two Pointer (Better)
+Problem says sorted array, so brute force is not ideal.
 
-// Problem 136: Single Number 
-/*
-Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
-
-You must implement a solution with a linear runtime complexity and use only constant extra space */
-
-int singleNumber(vector<int>& nums) // here the & means the pass by references . By default passed by value. So a alias is created of the vector nums so that it will be used 
-{
-        int ans;
-        for(int i=0;i<nums.size(); i++){
-            int count=0;
-            for(int j=0;j<nums.size();j++){
-                if(nums[i]==nums[j]){
-                    count++;
-                }
-            }
-            if(count==1){
-                cout<<nums[i];
-                ans= nums[i];
-            }
-        }
-        return ans;
-} 
-// above method donot have the linear runtime complexity
-// So we use the bitwise operator to optimize the problem 
-/*
-we use the xor as when same num are xor ed then the result will be 0 
-
-so we xor of the whole vector then only single number remains
+ Optimal: O(n)
 */
-
-class Solution {
-public:
-    int singleNumber(vector<int>& nums) {
-        int ans=0;
-        for(int i=0;i<nums.size();i++){
-            ans ^= nums[i];
+vector<int> pairsum(vector<int> nums, int s, int t)
+{
+    vector<int> ans;
+    int i = 0, j = s - 1;
+    while (i < j)
+    {
+        int pairSum = nums[i] + nums[j];
+        if (pairSum > t)
+        {
+            j--;
         }
-        return ans;
+        else if (pairSum < t)
+        {
+            i++;
+        }
+        else
+        {
+            ans.push_back(i);
+            ans.push_back(j);
+            return ans;
+        }
     }
-};
-
+return {};
+}
 
 int main()
 {
-
-
- 
-
-
-
-
-
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+    int n = nums.size();
+    vector<int> ans = pairsum(nums, n, target);
+    if (ans.size() >= 2)
+        cout << ans[0] << "," << ans[1];
+    else
+        cout << "No pair found";
     return 0;
 }

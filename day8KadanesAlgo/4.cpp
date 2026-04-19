@@ -1,5 +1,8 @@
 // If all numbers are negative, the basic version fails.So we use this improved approach 
 
+#include <iostream>
+using namespace std;
+
 int kadane(int arr[], int n) {
     int currSum = arr[0];
     int maxSum = arr[0];
@@ -10,4 +13,15 @@ int kadane(int arr[], int n) {
     }
 
     return maxSum;
+}
+int main()
+{
+
+    int arr[] = {-2, -1, -3, -4, -1, -2, -1, -5, -4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Maximum Subarray Sum: " << kadane(arr, n);
+
+    return 0;
+
 }
