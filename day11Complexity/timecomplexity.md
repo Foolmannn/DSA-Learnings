@@ -276,11 +276,6 @@ Time complexity is not about code length.
 
 ---
 
-Good—if you understand **time complexity**, the next piece is **space complexity**, and honestly, many beginners ignore it until it bites them in interviews or large inputs.
-
-Let’s break it down properly.
-
----
 
 
 

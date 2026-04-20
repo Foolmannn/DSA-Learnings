@@ -1,8 +1,4 @@
 
-Good—if you understand **time complexity**, the next piece is **space complexity**, and honestly, many beginners ignore it until it bites them in interviews or large inputs.
-
-Let’s break it down properly.
-
 ---
 
 # 🔹 1. What is Space Complexity?
@@ -337,8 +333,3 @@ Most beginners optimize only time.
 
 ---
 
-If you want next:
-
-* I can give **combined time + space analysis problems**
-* Or teach **recursion tree method (advanced)**
-* Or analyze your **C++ code deeply (best practice method)**
