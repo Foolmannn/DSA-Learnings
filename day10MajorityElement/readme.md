@@ -87,3 +87,101 @@ You’re not checking all pairs—you’re **using order to eliminate half the s
 ---
 
 
+# Majority Element 
+
+Moore’s Voting Algorithm (also called **Boyer–Moore Majority Vote**) is a super efficient way to find the **majority element** in an array — the element that appears **more than ⌊n/2⌋ times**.
+
+---
+
+## 🔑 Core Idea
+
+If an element is the majority, it will **survive cancellation** against all other elements.
+
+Think of it like:
+
+* Every time you see a different element → cancel it out
+* Majority element will still remain at the end
+
+---
+
+## ⚙️ Algorithm Steps
+
+### Phase 1: Find Candidate
+
+```cpp
+int findCandidate(vector<int>& nums) {
+    int candidate = 0, count = 0;
+
+    for (int num : nums) {
+        if (count == 0) {
+            candidate = num;
+        }
+
+        if (num == candidate) count++;
+        else count--;
+    }
+
+    return candidate;
+}
+```
+
+---
+
+### Phase 2: Verify Candidate (IMPORTANT ⚠️)
+
+The algorithm **only guarantees a candidate**, not correctness.
+
+```cpp
+int majorityElement(vector<int>& nums) {
+    int candidate = findCandidate(nums);
+
+    int count = 0;
+    for (int num : nums) {
+        if (num == candidate) count++;
+    }
+
+    if (count > nums.size() / 2)
+        return candidate;
+
+    return -1; // No majority element
+}
+```
+
+---
+
+## 🧠 Why It Works
+
+* Majority element appears **more than all others combined**
+* So even after cancellations, it remains
+
+---
+
+## ⏱️ Complexity
+
+* Time: **O(n)**
+* Space: **O(1)** (no extra memory)
+
+---
+
+## 📌 Example
+
+```
+Input: [2,2,1,1,1,2,2]
+
+Process:
+candidate changes but final = 2
+
+Output: 2
+```
+
+---
+
+## 🚀 Key Insight
+
+This is one of those rare algorithms that:
+
+* Uses **no hashmap**
+* Uses **constant space**
+* Still solves majority efficiently
+
+---
