@@ -79,3 +79,29 @@ public:
 };
 
 // Avoiding the extra space complexity 
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+
+        // This will store the final result
+        vector<int> answer(n, 1);
+
+        // Step 1: Store prefix products directly in answer
+        // answer[i] = product of all elements before i
+        for(int i = 1; i < n; i++) {
+            answer[i] = answer[i - 1] * nums[i - 1];
+        }
+
+        // Step 2: Traverse from right and multiply with suffix
+        int suffix = 1;  // stores product of elements after i
+
+        for(int i = n - 1; i >= 0; i--) {
+            answer[i] = answer[i] * suffix;  // combine prefix & suffix
+            suffix *= nums[i];               // update suffix
+        }
+
+        return answer;
+    }
+};
