@@ -17,7 +17,7 @@ public:
     int removeDuplicates(vector<int>& nums) {
         int n = nums.size();
         int filler = 1000;
-        int count = 0;
+        int count = 0;<
 //         for (int i = 0; i < n ; i++) { this will cause the issue of overflow
 //     if (nums[i] == nums[i + 1]) {
 //         nums[i] = filler;
