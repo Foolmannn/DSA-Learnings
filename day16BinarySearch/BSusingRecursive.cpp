@@ -18,9 +18,8 @@ int binarySearchRec(vector<int>& arr, int st, int end, int target) {
 int main() {
     vector<int> arr = {1, 3, 5, 7, 9, 11};
     int target = 7;
-    int n= arr.size();
 
-    int result = binarySearchRec(arr,arr[0],arr[n-1], target);
+    int result = binarySearch(arr, target);
 
     if (result != -1)
         cout << "Found at index: " << result;

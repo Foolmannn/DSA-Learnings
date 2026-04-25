@@ -13,6 +13,19 @@
 
 
 // Solution is that in rotated array has one side sorted always so we can apply binary search in the sorted side 
+
+//  Key Idea (important for interviews)
+
+// This is Binary Search on a Rotated Sorted Array.
+
+// At every step:
+
+// One half is always sorted
+// You identify the sorted half
+// Then check if the target lies in that half
+// Narrow down accordingly
+
+
 class Solution {
 public:
     int search(vector<int>& nums, int tar) {
